@@ -1,0 +1,147 @@
+{% extends "temps/base.html" %}
+
+{% load static %}
+
+
+{% block title %}<title>tools</title>{% endblock %}
+
+
+
+{% block content %}
+<!-- <div>
+	<h2>Empty Rooms</h2>
+</div>
+<div class="container">
+<div class="reporter">
+	<div class="row">
+		<form action="" role="" method="post">
+			{% csrf_token %}
+				<label>Rooms</label><br>
+				{{rooms.rooms}}<br><br>
+				<label>Location</label><br>
+				{{rooms.location}}<br><br>
+				<label>Status</label><br>
+				{{rooms.status}}<br><br>
+				<label>Name</label><br>
+				{{sugg.name}}<br><br>
+				<label>Email</label><br>
+				{{sugg.email}}<br><br>
+
+			<input type="submit" name="submit" class="btn btn-primary btn-xs" value="Occupy">
+		</form>
+	</div>
+	
+</div>
+</div> -->
+
+<div class="emp">
+<p>
+	<h4 style="text-align: center;font-size: 36px;">Empty Rooms</h4>
+</p>
+
+<div class="modal fade">
+	<div class="modal-dialog">
+		<div  id="dialog-link" >
+			<form method="POST" id="room-form">
+	{% csrf_token %}
+	<div class="modal-header" class="container">
+		<h2 class="modal-title">Occupy The Room</h2>
+	</div>
+
+	<div class="form-group"> 
+		<label>Course</label>
+		<input type="text" name="" class="form-control" id="course" placeholder="Course" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Unit</label>
+		<input type="text" name="" class="form-control" id="unit" placeholder="Unit" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Year Of Study</label>
+		<input type="text" name="" class="form-control" id="year_of_study" placeholder="Y.O.S" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Room</label>
+		<input type="text" name="" class="form-control" id="rooms" placeholder="Room" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Time</label>
+		<input type="time" name="" class="form-control" id="mtime" placeholder="Time" required="">
+	</div>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-primary">Occupy</button>
+</form>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="modal-fade">
+	<div class="modal-dialog">
+		<div class="modal-content" id="dialog-link">
+			<form method="POST" id="events-form">
+				{% csrf_token %}
+				<div class="modal-header" class="container">
+					<h4 class="modal-title">Create a new event</h4>
+					<button class="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					
+				</div>
+				<div class="form-group"> 
+					<label>Rooms</label>
+					<input type="text" name="" class="form-control" id="rooms" placeholder="Rooms">
+				</div>
+				<div class="form-group">
+					<label>Location</label>
+					<input type="text" name="" class="form-control" id="location" placeholder="Location">
+				</div>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Occupy</button>
+			</form>
+			<hr/>
+        </div>
+    </div>
+</div> -->
+<div class="container-fluid">
+	<table class="table" id="my-events">
+		<thead>
+			<tr>
+				<th>Rooms</th>
+				<th>Location</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for emptyroom in emptyrooms%}
+			<tr>
+				<td id="rms">{{emptyroom.rooms}}</td>
+				<td>{{emptyroom.location}}</td>
+				<td>
+					<p>
+   						<button type="button" class="btn btn-success btn-sm js-occupy-room">
+							<span class="glyphicon glyphicon-plus">Occupy</span>
+			    	    </button>
+					</p>
+			    	
+			    </td>
+			</tr>
+
+		
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+</div>
+
+
+
+
+<!-- course, unit, time, y.o.s-->
+<script type="text/javascript" src="{% static 'jq/jquery-ui.min.js' %}"></script>
+<script type="text/javascript">
+	let room =$('#rms').val()
+	console.log(room);
+</script>
+
+{% endblock %}

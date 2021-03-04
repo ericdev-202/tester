@@ -1,0 +1,131 @@
+{% extends "temps/base.html" %}
+
+{% load static %}
+
+
+{% block title %}<title>tools</title>{% endblock %}
+
+
+
+{% block content %}
+<style type="text/css">
+	.contain{
+		margin-left: 400px !important;
+	}
+	.form-control{
+		width: 700px !important;
+	}
+</style>
+
+
+
+<div class="contain">
+	<div class="row">
+	<h1>Search classes Information</h1>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<form method="POST" action="/search/">
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-log-5">
+				<input type="text" name="srh" class="form-control" placeholder="Enter Course or Unit">
+			</div><br>
+			<label class="col-log-2">
+				<button type="submit" class="btn btn-danger">Search</button>
+			</label>
+		</div>
+	</form><br><br>
+    </div><br><br><br>
+	<div>
+		{% if messages %}
+		<ul class="messages">
+			{% for k in messages %}
+			<li style="color: red;margin-left: 30px;">{{ k }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Course</th>
+					<th>Y.O.S</th>
+					<th>Unit</th>
+					<th>Room</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if sr %}
+		        {% for k in sr %}
+		        <tr>
+		        	<td>{{ k.course }}</td>
+		        	<td>{{ k.year_of_study }}</td>
+		        	<td>{{ k.unit }}</td>
+		        	<td>{{ k.rooms }}</td>
+		        	<td>{{ k.mtime }}</td>
+		        </tr>
+		 		{% endfor %}
+		        {% endif %}
+			</tbody>
+		</table>
+
+</div>
+
+
+
+<!-- <div class="contain">
+	<h1>Search Information</h1>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+		<form method="POST" action="/search/">
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-log-5">
+				<input type="text" name="srh" class="form-control" placeholder="Enter Course or Unit">
+			</div><br>
+			<label class="col-log-2">
+				<button type="submit" class="btn btn-primary">Search</button>
+			</label>
+		</div>
+	</form><br><br>
+		</div>
+	<div>
+		{% if messages %}
+		<ul class="messages">
+			{% for k in messages %}
+			<li style="color: red">{{ k }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Course</th>
+					<th>Y.O.S</th>
+					<th>Unit</th>
+					<th>Room</th>
+					<th>Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if sr %}
+		        {% for k in sr %}
+		        <tr>
+		        	<td>{{ k.course }}</td>
+		        	<td>{{ k.year_of_study }}</td>
+		        	<td>{{ k.unit }}</td>
+		        	<td>{{ k.rooms }}</td>
+		        	<td>{{ k.mtime }}</td>
+		        </tr>
+		 		{% endfor %}
+		        {% endif %}
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+	
+</div> -->
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "temps/base.html" %}
+
+{% load static %}
+
+{% block title %}<title>About Us Page</title>{% endblock %}
+
+
+
+
+{% block content %}
+
+<h1 class="page-header">Events</h1>
+<p>
+	<button type="button" class="btn btn-primary js-create-event">
+		<span class="glyphicon glyphicon-plus"></span>
+		New Event
+	</button>
+
+
+
+</p>
+<div class="modal fade">
+	<div class="modal-dialog">
+		<div  id="dialog-link" >
+			<form method="POST" id="event-form">
+	{% csrf_token %}
+	<div class="modal-header" class="container">
+		<h2 class="modal-title">Create a new event</h2>
+	</div>
+
+	<div class="form-group"> 
+		<label>Title</label>
+		<input type="text" name="" class="form-control" id="title" placeholder="Title" required="">
+	</div>
+	<div class="form-group">
+		<label>Description</label>
+		<textarea class="form-control" id="description" placeholder="Description"></textarea required>
+	</div>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-primary">Post</button>
+</form>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<table class="table" id="my-event">
+		<thead>
+			<tr>
+				<!-- <th>Id</th> -->
+				<th>Title</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for event in events %}
+
+			<tr id="event-{{event.id}}">
+				<td class="eventTitle eventData" name="title">{{event.title}}</td>
+				<td class="eventDescription eventData" name="description">{{event.description}}</td>
+			    <td>
+			    	<button type="button" class="btn btn-warning btn-sm " onClick="editEvent({{event.id}})" data-toggle="modal" data-target="#myModal">
+			    		<span class="glyphicon glyphicon-pencil">Edit</span>
+			    	</button>
+			    	<button type="button" class="btn btn-danger btn-sm" onClick="deleteEvent({{event.id}})">
+			    		<span class="glyphicon glyphicon-trash">Delete</span>
+			    	</button>
+			    </td>
+			</tr>
+		
+		{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+	<div style="text-align: center;">
+		<button type="button" class="btn btn-success" >
+			<span class="glyphicon glyphicon-plus"></span>
+		Hide
+	    </button>
+
+	    <button type="button" class="btn btn-success " >
+		    <span class="glyphicon glyphicon-plus"></span>
+		Show
+	    </button>
+	</div>
+
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">Update Event</h4>
+        </div>
+        <form id="updateEvent" action="">
+        <div class="modal-body">
+            <input class="form-control" id="form-id" type="hidden" name="formId" required="" />
+            <label for="title">Title</label>
+            <input class="form-control" id="form-title" type="text" name="formTitle" required="" />
+            <label for="description">Description</label>
+            <input class="form-control" id="form-description" type="text" name="formDescription" required="" />
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+  
+    </div>
+  </div>
+
+
+		
+    <!--  <div class="modal-content" id="dialog-link">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Update event</h4>
+				</div>
+			<form  action="" id="updateEvent">
+				<div class="modal-body">
+						<input class="form-control" id="form-id" type="hidden" name="formId">
+					<div class="form-group"> 
+						<label>Title</label>
+						<input type="text" name="formTitle" class="form-control" id="form-title" placeholder="Title">
+				    </div>
+				    <div class="form-group">
+					    <label>Description</label>
+					    <textarea class="form-control" id="form-description" placeholder="Description"></textarea>
+				    </div>
+				</div>
+				<div class="modal-footer"> 
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				    <button type="submit" class="btn btn-primary">Update event</button>
+				</div>
+			</form>
+		</div>
+ -->
+
+
+{% endblock %}

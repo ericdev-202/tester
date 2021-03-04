@@ -1,0 +1,412 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: verdana;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.login{
+  border: 1px solid #ccc;
+  margin: auto;
+  width: 60%;
+  align-content: center;
+  padding: 40px;
+  border-radius: 30px;
+}
+
+
+
+
+
+@media(max-width: 768px){
+  .login{
+    background-color: #fff;
+    border: 3px solid #ccc;
+    width:100%;
+  }
+}
+    .eve{
+        margin-left: 400px;
+        padding-top: 0px;
+    }
+    .fa{
+        text-align: center;
+    }
+
+
+.emp{
+        margin-left: 400px;
+        width: 700px !important;
+        margin-top: 9% !important;
+    }
+  .contain{
+    width: 700px !important;
+    margin-left: 400px !important;
+    margin-top: 9% !important;
+    position: absolute;
+  }  
+.nav{
+    display: block !important;    
+    top:30px;
+
+ }
+
+.contain{
+    /*margin: 0 8vw;*/
+
+}
+.btn{
+    border-radius: 2px;
+}
+  .contin{
+    width: 70% !important;
+    margin-left: 400px !important;
+    margin-top: 0px !important;
+    position: absolute;
+  }
+
+
+
+
+
+
+
+p{
+    font-family: lexend;
+    color: text-light;
+}
+
+li{
+    text-decoration: none !important;
+
+}
+
+
+
+/* Style the navigation menu */
+.topnav {
+    width: 18%;
+    height: 100%;
+    background-color: #28a745;
+    top: 12%;
+    position: fixed;
+}
+@media screen and (max-width: 500px){
+  .container{
+    margin-left: 10px !important;
+    width: 300px !important;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .topnav{
+    background-color: green !important;
+    padding-left: 5px !important; 
+    width: 13% !important;
+    /*position: fixed;*/
+    
+  }
+  .icons{
+    width: 87% !important;
+
+
+  }
+  .cow{
+    background-color: green !important;
+    border-color: white;
+    border-radius: 7px;
+    color: white !important;
+    margin-left: 1% !important;
+    text-align: center !important;
+    margin-top: 25px !important;
+    padding-left: .1% !important;
+    /*position: fixed;*/
+
+  }
+  .side-top{
+
+    background-color: yellow !important;
+    width: 20px !important;
+  }
+  .side-top a{
+    display: none !important;
+  }
+  .circle{
+    display: none !important;
+    text-align: center;
+  }
+  li{
+
+  }
+  li a{
+    font-size: 9px !important;
+    padding-left: 0px;
+  }
+  li a:hover{
+    font-size: 3px !important;
+  }
+  .side-top{
+    width: 18% !important;
+  }
+  .cow{
+    width: 18% !important;
+  }
+  .icons{
+    width: 87% !important;
+    position: fixed;
+
+  }
+  .eve{
+    margin-left: 150px !important;
+    font-size: 10px !important;
+  }
+  .bt{
+    width: 20px !important;
+    font-size: 10px !important;
+    padding-right: 45px !important;
+  }
+/*  #myLinks a{
+    position: relative !important;
+    margin-left: 0px !important;
+    left: 0px !important;
+    text-align: center !important;
+    font-size: 9px !important;
+  }*/
+  .social{
+    padding-left: 0px !important;
+    width: 12% !important;
+    background-color: green !important;
+    top: 10px !important;
+    position: fixed;
+  }
+  .social p{
+    font-size: 10px !important;
+  }
+  .social a{
+    color: red !important;
+    font-size: 9px !important; 
+
+  }
+  .topnav span{
+    padding-top: 16px !important;
+    font-size: 10px !important;
+    height: 40px !important;
+  }
+}
+
+.topnav #myLinks {
+  display: block;
+}
+hr{
+  margin-left: 0px !important;
+  /*width: 100% !important;*/
+}
+.topnav ul a{
+  padding-right: 20px !important;
+  background-color: black !important;
+  width: 100px !important;
+  left: 0px !important;
+  font-size: 10px !important;
+}
+/* Style navigation menu links */
+.topnav span{
+  width: 100%;
+  background-color: grey;
+  height: 80px;
+  padding-top: 25px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+.topnav span:hover{
+  /*background-color: #7949;*/
+  /*padding: 14px 16px;*/
+  width: 100%;
+  margin-left: 0px;
+/*  font-size: 30px;*/
+}
+#myLinks a {
+  color: white;
+  padding: 14px 10px;
+  margin-left: 0px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  color: white;
+  /*background: black;*/
+  display: block;
+  top: 30px;
+  left: 0px;
+  width: 150px;
+  /*position: absolute;*/
+  border-radius: 30px;
+  margin-right: 0px;
+  margin-top: 30px;  
+  text-align: center;
+
+}
+
+/* Add a grey background color on mouse-over */
+.topnav li a:hover {
+  padding: 14px 20px;
+  padding-right: 11px !important;
+  padding-left: 0px !important;
+  left: 0px !important;
+  margin-left: 0px !important;
+  /*background-color: #000;*/
+  /*margin-top: 10px !important;*/
+  /*background-size: 18% !important;*/
+  /*position: fixed;*/
+  color: yellow !important;
+  font-size: 9px !important;
+}
+#myLinks{
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.dropdown-menu{
+    background-color: #ccc !important;
+}
+.dropdown-menu li a{
+    color: white !important;
+}
+
+.container{
+    width: 70% !important;
+}
+.container .fa{
+    padding-right: 10px !important;
+}
+
+.search{
+    display: inline-block;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: 12px 17px;
+    padding: 12px 20px 14px 42px;
+    border-radius: 25px;
+    margin-top: 5px;
+    outline: none;
+    width: 450px;
+    -webkit-transition: width 0.7s ease-in-out;
+    -moz-transition: width 0.7s ease-in-out;
+    -ms-transition: width 0.7s ease-in-out;
+    -o-transition: width 0.7s ease-in-out;
+    transition: width 0.7s ease-in-out;
+}
+
+
+.social{
+    top: 550px !important;
+    text-align: center;
+    position: fixed;
+    padding-left: 10px;
+}
+.social a{
+    padding: 2px;
+    color: white;
+    display: inline-block;
+}
+.social p{
+    color: black;
+    font-size: 17px;
+    font-family: Menlo;
+    /*font-family: Menlo, Monaco, Consolas, "Courier New", monospace;*/
+    font-style: italic;
+}
+.social a:hover{
+  color: #459 !important;
+  font-size: 20px !important;
+}
+
+
+.account{
+  height: 200px;
+  width: 200px;
+  margin-right: 10px;
+  margin-bottom: 16px;
+  border-radius: 100% !important;
+}
+.icons{
+  height: 12% !important;
+  top: 0px;
+    text-align: right;
+    padding-right: 3px;
+    font-size: 13px;
+    color: white !important;
+  margin-left: 18% !important;
+  background-color: #28a745;;
+  color: black !important;
+  width: 82% !important;  
+  position: fixed;
+}
+.dropdown-menu a:hover{
+  color: black !important;
+  border: none !important;
+/*  background-color: #ccc !important;*/
+}
+.n li{
+  text-decoration: none !important;
+}
+li{
+  text-decoration: none !important;
+}
+.search{
+  margin-right: 10px !important;
+}
+.fuck{
+  margin-right: 100px !important;
+}
+/*.icons .fa{
+  margin-right: 20px !important;
+}*/
+.girl{
+  margin-top: 30px !important;
+  margin-right: 20px !important;
+  padding-left: 10px !important;
+  color: white !important;
+}
+.ass{
+  margin-right: 100px !important;
+  margin-left: 10px !important;
+  color: white !important;
+}
+.boy{
+  margin-right: 40px !important;
+  margin-left: 10px !important;
+}
+.asshole{
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+}
+.girl:hover{
+  font-size: 17px;
+}
+.boy:hover{
+  font-size: 17px;
+}
+.asshole:hover{
+  font-size: 17px;
+}
+.ass:hover{
+  font-size: 17px;
+}
+.fuck:hover{
+  font-size: 17px;
+}
+.line{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}

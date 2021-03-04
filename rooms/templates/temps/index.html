@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dashboard</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/css/bootstrap.css' %}">	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap-theme.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/font-awesome/css/font-awesome.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'jq/jquery-ui.theme.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'jq/jquery-ui.structure.css' %}">
+</head>
+
+<body>
+<section class="contain">
+	<div class="site-content">
+    	<div class="ow">
+<!-- 					<div class="img">
+					<div class="name">
+						<img src="static/images/pic03.jpg">
+						<p>Eric Muchiri</p>
+					</div>
+				</div>	 -->
+		<div class="sidebar">
+
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
+
+			<div id="top">
+				<ul>
+					<li><a href="{% url 'home'%}"><i class="fa fa-fw fa-home">Home</i></a></li>
+					<li><a href="{% url 'event' %}"><i class="fa fa-fw fa-tasks">Events</i></a></li>
+					<li><a href="{% url 'search' %}"><i class="fa fa-fw fa-search">Search</i></a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-fw fa-wrench">Tools</i></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'emptyrooms' %}">Emptyrooms</a></li>
+							<li><a href="{% url 'rooms' %}">View Rooms</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+			<div class="social">
+				<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+			</div>		
+	</div>
+
+	<aside class="icons">
+	<div class="contain"><br>
+			<ul class="nav navbar-nav navbar-right me"  >
+					<input type="text" name="" placeholder="search" class="search">
+					<button  type="submit" class="btn btn-success">Search</button>
+			
+					<i class="fa fa-fw fa-bell"></i>
+					<i class="fa fa-fw fa-user-circle"></i>
+					<i class="fa fa-fw fa-power-off"></i>
+				</div>
+				
+			</ul>
+			<hr style="border: 1px solid #ccc; width: 100%;margin-top: 100px; left: 10px;"><br>
+
+			<div class="content-box"><br>
+				<div class="container">
+					<div class="row text-center">
+						<div class="col-md-2">
+							<div class="stat-items">
+								<a href="#"><i class="fa fa-fw fa-users">OnlineUsers</i></a>	
+								<h2><span class="counter text-center">2380</span><span>+</span></h2>
+								<p>VIEWS</p>
+							</div>   
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+
+
+
+
+
+		</aside>
+	</div>
+</section>
+
+
+
+
+
+
+	<script type="text/javascript" src="{% static 'css/js/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'css/js/bootstrap.js' %}"></script>
+	<script type="text/javascript" src="{% static 'jq/jquery-ui.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+ 	$(document).ready(function (){
+ 		$(function (){
+ 			$("#dialog-link").dialog({
+ 				autoOpen:false,
+ 				width:400,
+ 			});
+ 			$(".js-occupy-room").on("click", function(){
+ 				$("#dialog-link").dialog("open");
+ 			});
+ 		});
+ 		$("form#room-form").on("submit",function GetTableData(e){
+ 			e.preventDefault();
+ 			$.ajax({
+ 				type:'POST',
+ 				url:'{% url "student"%}',
+ 				data:{
+ 					course:$('#course').val(),
+                    year_of_study:$('#year_of_study').val(),
+                    unit:$('#unit').val(),
+                    rooms:$('#rooms').val(),
+                    mtime:$('#mtime').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action:'post'
+ 				},
+ 				success:function(){
+ 					alert("You Successfully occupied the room!")
+ 				}
+ 			});
+ 		})
+ 	})
+  	$(document).ready(function(){
+        $(function(){
+		    $("#dialog-link").dialog({
+			    autoOpen: false,
+			    width: 400,
+		});
+		    $(".js-create-event").on("click", function(){
+
+			    $("#dialog-link").dialog("open");
+		});
+	});
+	$("form#event-form").on("submit",function GetTableData(e){	
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:'{% url "event" %}',
+			data:{
+				title:$('#title').val(),
+				description:$('#description').val(),
+				venue:$('#venue').val(),
+				mdate:$('#mdate').val(),
+				mtime:$('#mtime').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+				action: 'post'
+	
+			},
+			success:function(data){
+				if (data.event) {
+					appendTomy_event(data.event);
+				}
+			}
+			// success:function(data){
+			// 	document.getElementById("event-form").reset();
+			// 	$("#my_event tbody").append(
+			// 		'<tr><td>${fields["title"]||""}</td><td>${fields["description"]||""}</td><td>${fields["venue"]||""}</td><td>${fields["mdate"]||""}</td><td>${fields["mtime"]||""}</td></tr>'
+			// 		) 
+			// },
+			// error : function(xhr,errmsg,err){
+			// 	console.log(xhr.status + ":" + xhr.responseText);
+			// }
+		});
+
+		$('form#event-form').trigger("reset");
+		return false;
+		// body...
+	});
+
+});
+	function appendTomy_event(event){
+		$("#my_event > tbody:last-child").append(
+			'<tr id="event-${event.id}"><td class="eventTitle" name="title">${event.title}</td><td class="eventDescription" name="description">${event.description}</td><td class="eventVenue" name="venue">${event.venue}</td><td class="eventDate" name="mdate">${event.mdate}</td><td class="eventTime" name="mtime">${event.mtime}</td><td><button type="button" class="btn btn-warning btn-sm " onClick="editEvent({{event.id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil">Edit</span></button><button type="button" class="btn btn-danger btn-sm" onClick="deleteEvent({{event.id}})"><span class="glyphicon glyphicon-trash">Delete</span></button></td></tr>'
+			)
+	}  	
+// $("form#updateEvent").on("submit",function GetTableData(e) {
+// 	e.preventDefault();
+
+// 		$.ajax({
+// 			url:'{% url "event_update" %}',
+// 			data:{
+// 				title:$('#title').val(),
+// 				description:$('#description').val(),
+// 				venue:$('#venue').val(),
+// 				mdate:$('#mdate').val(),
+// 				mtime:$('#mtime').val(),
+// 				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+// 				action: 'post'
+	
+// 			},
+// 			success:function(data){
+// 				if (data.event) {
+// 					updateTomy_event(data.event);
+// 				}	
+// 			}
+// 		});
+
+// 	    $('form#updateEvent').trigger("reset");
+//         $('#myModal').modal('hide');
+//         return false;
+// 		// body...
+// });
+$("form#updateEvent").submit(function() {
+    var idInput = $('input[name="formId"]').val().trim();
+    var titleInput = $('input[name="formTitle"]').val().trim();
+    var descriptionInput = $('input[name="formDescription"]').val().trim();
+    var venueInput = $('input[name="formVenue"]').val().trim();
+    var mdateInput = $('input[name="formDate"]').val().trim();
+    var mtimeInput = $('input[name="formTime"]').val().trim();
+    if (titleInput && descriptionInput && venueInput && mdateInput && mtimeInput) {
+    	$.ajax({
+            url: '{% url "event_update" %}',
+            data: {
+                'id': idInput,
+                'title': titleInput,
+                'description': descriptionInput,
+                'venue': venueInput,
+                'mdate': mdateInput,
+                'mtime': mtimeInput
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.event) {
+                  updateTomy_event(data.event);
+                }
+            }
+        });
+    }else{
+    	alert("All fields must have a valid value.");
+    }
+    $('form#updateEvent').trigger("reset");
+    $('#myModal').modal('hide');
+    return false;
+
+});
+function editEvent(id) {
+	if (id) {
+		tr_id = "#event-" + id;
+		title = $(tr_id).find(".eventTitle").text();
+		description = $(tr_id).find(".eventDescription").text();
+		venue = $(tr_id).find(".eventVenue").text();
+		mdate = $(tr_id).find(".eventDate").text();
+		mtime = $(tr_id).find(".eventTime").text();
+		$('#form-id').val(id);
+		$('#form-title').val(title);
+		$('#form-description').val(description);
+		$('#form-venue').val(venue);
+		$('#form-mdate').val(mdate);
+		$('#form-mtime').val(mtime);
+	}
+}
+function updateTomy_event(event){
+	$("#my_event #event-" +event.id).children(".eventData").each(function (){
+		var attr = $(this).attr("title");
+		if (attr == "title") {
+			$(this).text(event.title);
+		}else if (attr == "description") {
+			$(this).text(event.description);
+		}else if (attr == "venue") {
+			$(this).text(event.venue);
+		}else if (attr == "mdate") {
+			$(this).text(event.mdate);
+		}else{
+			$(this).text(event.mtime);
+		}
+	});
+}
+
+
+
+	// Delete Django Ajax Call
+function deleteEvent(id) {
+	var action = confirm("Are you sure you want to delete this event?");
+	if (action != false) {
+		$.ajax({
+			url: '{% url "event_delete" %}',
+			data: {
+				'id': id,
+			},
+			dataType:'json',
+			success:function(data){
+				if (data.deleted) {
+					$("#my_event #event-" +id).remove();
+				}
+			}
+		});
+	}
+}	
+
+// $('.delete_button').on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		let object_id = $(this).attr('data-object-id');
+// 		let url = 'delete/${object_id}/';
+// 		$.ajax({
+// 			url: ""
+// 			data: {
+// 				'csrfmiddlewaretoken': "{{ csrf_token }}"
+// 			},
+// 			type: "DELETE",
+// 			dataType: "json"
+// 		}).done(
+// 		     function(){alert("deleted");}
+// 		    ).fail(
+// 		      function(){alert("error");}
+// 		    )
+// 	}
+// })
+
+// $(".js-delete-event").on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		alert("removed");
+// 	}
+	
+// })
+
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("table").hide();
+  });
+  $("#show").click(function(){
+    $("table").show();
+  });
+});
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

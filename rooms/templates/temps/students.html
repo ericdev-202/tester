@@ -1,0 +1,133 @@
+{% extends "temps/base.html" %}
+
+{% load static %}
+
+
+{% block title %}<title>tools</title>{% endblock %}
+
+
+
+{% block content %}
+
+<div class="contain">
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+	<button type="submit">Upload Timetable</button>
+    </form>
+
+
+    <p><a href="{% url 'home' %}">Return to home</a></p>
+</div>
+
+
+
+<!-- <div class="container">
+<div class="reporter">
+	<div class="row">
+		<form action="" role="" method="post">
+			{% csrf_token %}
+			    <label>Course</label><br>
+				{{rooms.course}}<br><br>
+				<label>Rooms</label><br>
+				{{rooms.rooms}}<br><br>
+				<label>year_of_study</label><br>
+				{{rooms.year_of_study}}<br><br>
+				<label>unit</label><br>
+				{{rooms.unit}}<br><br>
+				<label>Status</label><br>
+				{{rooms.status}}<br><br>
+			<input type="submit" name="submit" class="btn btn-primary btn-xs" value="Report">
+		</form>
+	</div>
+	
+</div>
+</div> -->
+
+
+<!-- <div class="modal fade">
+	<div class="modal-dialog">
+		<div  id="dialog" >
+			<form method="POST" id="room-form">
+	{% csrf_token %}
+	<div class="modal-header" class="container">
+		<h2 class="modal-title">Occupy The Room</h2>
+	</div>
+
+	<div class="form-group"> 
+		<label>Course</label>
+		<input type="select" name="" class="form-control" id="course" placeholder="Course" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Unit</label>
+		<input type="text" name="" class="form-control" id="unit" placeholder="Unit" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Year Of Study</label>
+		<input type="text" name="" class="form-control" id="year_of_study" placeholder="Y.O.S" required="">
+	</div>
+	<div class="form-group"> 
+		<label>Room</label>
+		<input type="text" name="" class="form-control" id="rooms" placeholder="Room" required="">
+	</div>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-primary">Occupy</button>
+</form>
+
+		</div>
+	</div>
+</div> -->
+
+
+
+<!-- <div class="container">
+	<h1>Search classes Information</h1>
+	<form method="POST" action="/search">
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-log-5">
+				<input type="text" name="srh" class="form-control" placeholder="Enter Course or Unit">
+			</div>
+			<label class="col-log-2">
+				<button type="submit" class="btn btn-danger">Search</button>
+			</label>
+		</div>
+	</form><br><br>
+	<div>
+		{% if messages %}
+		<ul class="messages">
+			{% for k in messages %}
+			<li style="color: red">{{ k }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div><br>
+	<div style="color: blue">
+		{% if sr %}
+		{% for k in sr %}
+		<table border="0px" width="300px">
+			<tr>
+				<td>Course</td>
+				<td>{{ k.course }}</td>
+			</tr>
+			<tr>
+				<td>Year Of Study</td>
+				<td>{{ k.year_of_study }}</td>
+			</tr>
+			<tr>
+				<td>Unit</td>
+				<td>{{ k.unit }}</td>
+			</tr>
+			<tr>
+				<td>Room</td>
+				<td>{{ k.room }}</td>
+			</tr>
+		</table>
+		<hr>
+		{% endfor %}
+		{% endif %}
+	</div>
+</div>
+ -->
+
+{% endblock %}

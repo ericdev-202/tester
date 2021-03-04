@@ -1,0 +1,468 @@
+{% load static %}
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}"> 
+  <link rel="stylesheet" type="text/css" href="{% static  'css/css/css/bootstrap.css' %}">  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap-theme.css' %}">
+  <link rel="stylesheet" type="text/css" href="{%static 'css/font-awesome/css/font-awesome.css' %}">   
+<style type="text/css">
+    /*body,
+    html{
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ccc !important;
+      background-image: linear-gradient(155deg,white,violet,green,lightblue,yellow,purple);
+      background-size: 450%;
+      animation: bganimation 15s infinite;
+    }
+        @keyframes bganimation
+    {
+      0%{
+        background-position:0% 50%;
+      }
+      
+      50%{
+         background-position:100% 50%;
+      }
+      
+      100%{
+        background-poition:0% 50%;
+      }
+      
+    }*/
+.contain{
+  width: 30% !important;
+  text-align: center !important; 
+  margin-top: 20px !important;
+  margin-bottom: auto;
+  margin-left: 500px !important;
+  height: 570px !important;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+/*  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -moz-box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
+  /*border: 2px solid #ccc;*/
+  margin: auto;
+  align-content: center;
+  padding: 40px;
+  border-radius: 30px;
+  /*background: #74cfbf;*/
+}
+/* .card{
+  border: 1px solid #ddd;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100% !important;
+  height: 570px !important;
+  align-content: center;
+  padding: 2px !important;
+  border-radius: 30px !important;
+}*/
+@media(max-width: 768px){
+
+}
+/*@media(max-width: 768px){
+  .card{
+    background-color: #fff !important;
+    border: 3px solid #ccc;
+    width:100% !important;
+  }
+}*/
+h2{
+  text-align: center;
+}
+
+.form-group{
+  text-align: center;
+}
+input{
+    display: inline-block;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: 12px 17px;
+    padding: 12px 20px 14px 42px;
+    border-radius: 10px;
+    margin-top: 5px;
+    outline: none;
+    width: 90%;
+    -webkit-transition: width 0.7s ease-in-out;
+    -moz-transition: width 0.7s ease-in-out;
+    -ms-transition: width 0.7s ease-in-out;
+    -o-transition: width 0.7s ease-in-out;
+    transition: width 0.7s ease-in-out;
+}
+.modal-footer{
+  text-align: center;
+
+}
+.form-group{
+  height: 10px !important;
+  padding: 10px;
+}
+
+/*animating edges*/
+
+/*div.anim{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px auto;
+    width: 30%;
+    height: 100%;
+    background: white;
+    border-radius: 75px;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    transition: 1s box-shadow;
+  }
+  div.anim:hover{
+    box-shadow: 0 5px 35px 0px rgba(0,0,0,0.1);
+  }
+  div.anim:hover::before,div:hover::after{
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: yellow; 
+    border-radius: 75px;
+    z-index: -1;
+    z-index: 1s clockwise infinite;
+  }
+  div.anim:hover:after{
+    background: linear-gradient(155deg,white,violet,green,lightblue);
+    animation: 2s counterclockwise infinite;
+  }
+  @keyframes clockwise{
+    0%{
+      top: -5px;
+      left: 0;
+    }
+    12%{
+      top: -2px;
+      left: 2px;
+    }
+    25%{
+      top: 0;
+      left: 5px;
+    }
+    37%{
+      top: 2px;
+      left: 2px;
+    }
+    50%{
+      top: 5px;
+      left: 0;
+    }
+    62%{
+      top: 2px;
+      left: -2px;
+    }
+    75%{
+      top: 0;
+      left: -5px;
+    }
+    87%{
+      top: -2px;
+      left: -2px;
+    }
+    100%{
+      top: -5px;
+      left: 0;
+    }
+  }
+  @keyframes counterclockwise{
+    0%{
+      top: -5px;
+      right: 0;
+    }
+    12%{
+      top: -2px;
+      right: 2px;
+    }
+    25%{
+      top: 0;
+      right: 5px;
+    }
+    37%{
+      top: 2px;
+      right: 2px;
+    }
+    50%{
+      top: 5px;
+      right: 0;
+    }
+    62%{
+      top: 2px;
+      right: -2px;
+    }
+    75%{
+      top: 0;
+      right: -5px;
+    }
+    87%{
+      top: -2px;
+      right: -2px;
+    }
+    100%{
+      top: -5px;
+      right: 0;
+    }
+  }
+*/
+  
+body{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #08001b !important;
+  min-height: 100vh !important;
+}
+.container{
+  width: 1100px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+.container .card{
+  position: relative !important;
+  width: 300px !important;
+  height: 500px !important;
+  background: #0c002b !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 30px !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.container .card::before{
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 50%;
+  background: rgba(255,255,255,0.1);
+  pointer-events: none;
+}
+.container .card span{
+  transition: 0.5;
+}
+.container .card span:nth-child(1){
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right,transparent,#1779ff);
+  animation: animate1 2s linear infinite;
+}
+@keyframes animate1{
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
+.container .card span:nth-child(2){
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom,transparent,#1779ff);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate2{
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+
+.container .card span:nth-child(3){
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to left,transparent,#1779ff);
+  animation: animate3 2s linear infinite;
+}
+@keyframes animate3{
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+
+.container .card span:nth-child(4){
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to top,transparent,#1779ff);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate4{
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+.mt-4{
+  text-align: center;
+}
+h2{
+  font-size: 18px !important;
+}
+ </style>
+ </head>
+ <body>
+  <div class="container anim">
+    <div class="card">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  <form method="post">
+    {% csrf_token %}
+
+        <h2 class="h2 mb-6 font-weight-normal">Please create account</h2>
+
+        <div class="form-group">
+        <label for="id_username"  class="sr-only">Username:</label><br>
+        <input type="username"  name="username" id="id_username" maxlength="150" required="" placeholder="Username:" autofocus=""> 
+        </div><br>
+        
+
+        <div class="form-group">
+        <label for="id_email"  class="sr-only">Email:</label><br>
+        <input type="email" name="email" id="id_email" maxlength="254" placeholder="Email:" required="">
+        </div><br>
+        
+        <div class="form-group">
+        <label for="id_password1"  class="sr-only">Password:</label><br>
+        <input type="password" name="password1" id="id_password1" placeholder="Password:" required="">
+        </div><br>
+
+
+        
+        <div class="form-group">
+        <label for="id_password2"  class="sr-only">Password confirmation:</label><br>
+        <input type="password" name="password2" id="id_password2" placeholder="Password confirmation:" required="">
+        </div><br><br><br>
+
+
+        <div class="modal-footer">
+          <button class="btn btn-lg btn-primary" type="submit">Sign Up</button>
+        </div>
+       
+          <div class="mt-4">
+          <div class="d-flex justify-content-center links">Already have an account?<a href="{% url 'login' %}" class="ml-2" >Login</a></div>
+        </div>
+         <p class="mt-5 mb-3 text-muted" style="text-align: center; color: blue;">&copy; EricMaster 2020</p>
+<!-- {{form.errors}} -->
+          {% for error in form.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+  </form>
+
+
+ </div>
+</div>
+ 
+ </body>
+ </html>
+
+<!--   <div class="contain">
+     <h2>Please create account</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+ </div>  -->
+
+
+ 
+
+
+
+
+
+
+<!-- {% load crispy_forms_tags %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>CareerPlug</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="{%static 'css/app.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+  <h2>Sign up</h2>
+  <div class="contain">
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+ </div> 
+  </body>
+</html> -->
+
+

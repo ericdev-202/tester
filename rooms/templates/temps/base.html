@@ -1,0 +1,697 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rooms</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static  'css/css/css/bootstrap.css' %}">	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/bootstrap-theme.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/font-awesome/css/font-awesome.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'jq/jquery-ui.theme.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'jq/jquery-ui.structure.css' %}">
+	  <!-- <link rel="stylesheet" type="text/css" href="{%static 'css/app.css' %}"> -->
+</head>
+<body>
+
+<style type="text/css">
+	
+@media(max-width: 300px){
+  .card{
+    background-color: #fff !important;
+    border: 3px solid #ccc;
+    width:100% !important;
+  }
+}
+
+.circle {
+	width: 50px !important;
+	height: 50px !important;
+	margin-top: 10px !important;
+}
+a{
+	color: white !important;
+}
+.side-top a{
+	width: 14%;
+	margin-left: 10px;
+	position: fixed;
+}
+.side-top{
+	background-color: black;
+	top: 0px;
+	margin-left: 0px;
+	height: 12% !important;
+	width: 18%;
+	position: fixed;
+
+}
+.cow{	
+	background-color: black;
+	border-color: white;
+	border-radius: 7px;
+	color: white !important;
+    margin-left: 14%;
+	text-align: center !important;
+	margin-top: 25px !important;
+	padding-left: .6% !important;
+	position: fixed;
+}
+.fa{
+	padding-left: 0px !important;
+	margin-left: 0px !important;
+}
+
+.topnav{
+	top: 12% !important;
+	/*padding-left: 30px !important;*/
+	height: 100%;
+	width: 18%;
+	background-color: lightgreen ;
+	/*border: 2px solid #ccc;*/
+	padding: 10px;
+	color: white;
+	position: fixed;
+
+
+}
+.topnav li{
+	display:block;
+	padding-left:15px;
+	padding:8px;
+
+}
+.topnav li a{
+	text-decoration:none;
+	color: white;
+}
+</style>
+
+
+<div class="side-top" >
+	<a href="{% url 'profile' %}"><img class="circle account" src="{{ user.profile.image.url }}">{{request.user}}</a>
+	<button type="button" class="cow">
+		<i class=" fa fa-fw fa-bars"></i>
+	</button>
+</div>
+<div class="topnav">
+	<span href="javascript:void(0);" class="icon" onclick="myFunction()">DASHBOARD</span>
+	<!-- <ul id="myLinks" class="try"> -->
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'home'%}"><i class="fa fa-fw fa-home"></i> Home</a></li>
+			{% endif %}
+			{% if user.is_authenticated %}
+            <li><a href="{% url 'event' %}"><i class="fa fa-fw fa-tasks"></i> Event</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'search' %}"><i class="fa fa-fw fa-search"></i> Search</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'emptyrooms'%}"><i class="fa fa-fw fa-university"></i> Rooms</a></li>
+            {% endif %}
+        <!-- </ul> -->
+        	<div class="social">
+				<p>Follow Us on</p>
+				<a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+				<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+			</div>	
+	</div>
+
+
+	<div class="icons">
+<!-- <input type="text" name=""  placeholder="search" class="search">
+<button  type="submit" class="fuck btn btn-success">Search</button> -->
+		<!-- <a href="{% url 'profile' %}"><img class="circle account" src="{{ user.profile.image.url }}">{{request.user}}   </a> -->
+			<!-- {{request.user}}   	 -->
+                
+			            <a href="{% url 'rooms'%}"><i class="asshole fa fa-fw fa-upload"></i></a>
+			            <span class="line">|</span>
+					    <i class="girl fa fa-fw fa-bell-o"></i>
+					    <span class="line">|</span>
+					    <a href="{%url 'login'%}"><i class="boy fa fa-fw fa-sign-in">SignIn</i></a>
+					    {% if user.is_authenticated %}
+					    <span class="line">|</span>
+					    {% endif %}
+			        	{% if user.is_authenticated %}
+			        	<a href="{% url 'logout' %}"><i class="ass fa fa-fw fa-sign-out">LogOut</i></a>
+			        	{% endif %}
+			        	
+    </div>			        	
+<!-- 	<div class="contin"><br>
+			<ul class="nav">
+				<a href="#"><i class="fa fa-fw fa-search"></i></a>
+					<input type="text" name=""  placeholder="search" class="search">
+					<button  type="submit" class="btn btn-success">Search</button>
+			        
+
+			     
+
+			</ul>		
+		</div> -->
+				
+			
+			<!-- <hr style="border: 1px solid #ccc; width: 60%;margin-top: 70px; margin-right: 120px;"><br> -->
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+<!-- NAVIGATION -->
+<!-- <div class="minicontact" id="minicontact"></div>
+<div id="mainnavigation" class="navbar navbar-default  mainnavigation" role="navigation">
+	<div class="handle">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <i class="fa fa-fw fa-bars"></i>
+			</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{% url 'home'%}">Home</a></li>
+			    <li><a href="{% url 'event' %}">Event</a></li>
+			    <li><a href="{% url 'search' %}">Search</a></li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">TOOLS<span class="caret"></span> </a>
+					<ul class="dropdown-menu">
+					    <li><a href="{% url 'emptyrooms' %}">Emptyrooms</a></li>
+						<li><a href="{% url 'rooms' %}">View Rooms</a></li>
+						<li><a href="{% url 'lecturers' %}">Lecturer</a></li>
+						
+				
+					</ul>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-right" role="search" method="GET" action="">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" placeholder="Search" value="{{request.GET.q}}">
+                    <button type="submit" class="btn btn-default"> Search</button>
+                </div>
+            </form>			
+
+		</div>
+	</div>
+</div> -->
+	<!-- END -->
+
+
+	<!-- <div class="girl">
+		<ul>
+			<li><a href="{% url 'home'%}">Home</a></li>
+				<li><a href="{% url 'event' %}">Event</a></li>
+			<li><a href="{% url 'events'%}">Events</a></li>
+			<li><a href="{% url 'rooms'%}">Rooms</a></li>
+			<li><a href="{% url 'emptyrooms' %}">Emptyrooms</a></li>
+			<li><a href="{% url 'student' %}">Student</a></li>
+			<li><a href="{% url 'lecturers' %}">Lecturer</a></li>
+		</ul>
+	</div> -->
+
+
+
+	{% block content %}
+  {% endblock %}
+
+
+  <script type="text/javascript" src="{%static 'css/js/jquery-3.2.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'css/js/bootstrap.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'jq/jquery-ui.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js'%}"></script>
+  <script type="text/javascript" src="{% static 'css/js/app.js' %}"></script>
+
+
+ <script type="text/javascript">
+
+
+
+/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+
+
+ 	$(document).ready(function (){
+ 		$(function (){
+ 			$("#dialog-link").dialog({
+ 				autoOpen:false,
+ 				width:400,
+ 			});
+ 			$(".js-occupy-room").on("click", function(){
+ 				$("#dialog-link").dialog("open");
+ 			});
+ 		});
+ 		$("form#room-form").on("submit",function GetTableData(e){
+ 			e.preventDefault();
+ 			$.ajax({
+ 				type:'POST',
+ 				url:'{% url "student"%}',
+ 				data:{
+ 					course:$('#course').val(),
+                    year_of_study:$('#year_of_study').val(),
+                    unit:$('#unit').val(),
+                    rooms:$('#rooms').val(),
+                    mtime:$('#mtime').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action:'post'
+ 				},
+ 				success:function(){
+ 					alert("You Successfully occupied the room!")
+ 				}
+ 			});
+ 		})
+ 	})
+  	$(document).ready(function(){
+        $(function(){
+		    $("#dialog-link").dialog({
+			    autoOpen: false,
+			    width: 400,
+		});
+		    $(".js-create-event").on("click", function(){
+
+			    $("#dialog-link").dialog("open");
+		});
+	});
+	$("form#event-form").on("submit",function GetTableData(e){	
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:'{% url "event" %}',
+			data:{
+				title:$('#title').val(),
+				description:$('#description').val(),
+				venue:$('#venue').val(),
+				mdate:$('#mdate').val(),
+				mtime:$('#mtime').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+				action: 'post'
+	
+			},
+			success:function(data){
+				if (data.event) {
+					appendTomy_event(data.event);
+				}
+				alert("You Have Successfully Posted the Event!")
+			}
+			// success:function(data){
+			// 	document.getElementById("event-form").reset();
+			// 	$("#my_event tbody").append(
+			// 		'<tr><td>${fields["title"]||""}</td><td>${fields["description"]||""}</td><td>${fields["venue"]||""}</td><td>${fields["mdate"]||""}</td><td>${fields["mtime"]||""}</td></tr>'
+			// 		) 
+			// },
+			// error : function(xhr,errmsg,err){
+			// 	console.log(xhr.status + ":" + xhr.responseText);
+			// }
+		});
+
+		$('form#event-form').trigger("reset");
+		return false;
+		// body...
+	});
+
+});
+	function appendTomy_event(event){
+		$("#my_event > tbody:last-child").append(
+			'<tr id="event-${event.id}"><td class="eventTitle" name="title">${event.title}</td><td class="eventDescription" name="description">${event.description}</td><td class="eventVenue" name="venue">${event.venue}</td><td class="eventDate" name="mdate">${event.mdate}</td><td class="eventTime" name="mtime">${event.mtime}</td><td><button type="button" class="btn btn-warning btn-sm " onClick="editEvent({{event.id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil">Edit</span></button><button type="button" class="btn btn-danger btn-sm" onClick="deleteEvent({{event.id}})"><span class="glyphicon glyphicon-trash">Delete</span></button></td></tr>'
+			)
+	}  	
+// $("form#updateEvent").on("submit",function GetTableData(e) {
+// 	e.preventDefault();
+
+// 		$.ajax({
+// 			url:'{% url "event_update" %}',
+// 			data:{
+// 				title:$('#title').val(),
+// 				description:$('#description').val(),
+// 				venue:$('#venue').val(),
+// 				mdate:$('#mdate').val(),
+// 				mtime:$('#mtime').val(),
+// 				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+// 				action: 'post'
+	
+// 			},
+// 			success:function(data){
+// 				if (data.event) {
+// 					updateTomy_event(data.event);
+// 				}	
+// 			}
+// 		});
+
+// 	    $('form#updateEvent').trigger("reset");
+//         $('#myModal').modal('hide');
+//         return false;
+// 		// body...
+// });
+$("form#updateEvent").submit(function() {
+    var idInput = $('input[name="formId"]').val().trim();
+    var titleInput = $('input[name="formTitle"]').val().trim();
+    var descriptionInput = $('input[name="formDescription"]').val().trim();
+    var venueInput = $('input[name="formVenue"]').val().trim();
+    var mdateInput = $('input[name="formDate"]').val().trim();
+    var mtimeInput = $('input[name="formTime"]').val().trim();
+    if (titleInput && descriptionInput && venueInput && mdateInput && mtimeInput) {
+    	$.ajax({
+            url: '{% url "event_update" %}',
+            data: {
+                'id': idInput,
+                'title': titleInput,
+                'description': descriptionInput,
+                'venue': venueInput,
+                'mdate': mdateInput,
+                'mtime': mtimeInput
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.event) {
+                  updateTomy_event(data.event);
+                }
+            }
+        });
+    }else{
+    	alert("All fields must have a valid value.");
+    }
+    $('form#updateEvent').trigger("reset");
+    $('#myModal').modal('hide');
+    return false;
+
+});
+function editEvent(id) {
+	if (id) {
+		tr_id = "#event-" + id;
+		title = $(tr_id).find(".eventTitle").text();
+		description = $(tr_id).find(".eventDescription").text();
+		venue = $(tr_id).find(".eventVenue").text();
+		mdate = $(tr_id).find(".eventDate").text();
+		mtime = $(tr_id).find(".eventTime").text();
+		$('#form-id').val(id);
+		$('#form-title').val(title);
+		$('#form-description').val(description);
+		$('#form-venue').val(venue);
+		$('#form-mdate').val(mdate);
+		$('#form-mtime').val(mtime);
+	}
+}
+function updateTomy_event(event){
+	$("#my_event #event-" +event.id).children(".eventData").each(function (){
+		var attr = $(this).attr("title");
+		if (attr == "title") {
+			$(this).text(event.title);
+		}else if (attr == "description") {
+			$(this).text(event.description);
+		}else if (attr == "venue") {
+			$(this).text(event.venue);
+		}else if (attr == "mdate") {
+			$(this).text(event.mdate);
+		}else{
+			$(this).text(event.mtime);
+		}
+	});
+}
+
+
+
+	// Delete Django Ajax Call
+function deleteEvent(id) {
+	var action = confirm("Are you sure you want to delete this event?");
+	if (action != false) {
+		$.ajax({
+			url: '{% url "event_delete" %}',
+			data: {
+				'id': id,
+			},
+			dataType:'json',
+			success:function(data){
+				if (data.deleted) {
+					$("#my_event #event-" +id).remove();
+				}
+			}
+		});
+	}
+}	
+
+// $('.delete_button').on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		let object_id = $(this).attr('data-object-id');
+// 		let url = 'delete/${object_id}/';
+// 		$.ajax({
+// 			url: ""
+// 			data: {
+// 				'csrfmiddlewaretoken': "{{ csrf_token }}"
+// 			},
+// 			type: "DELETE",
+// 			dataType: "json"
+// 		}).done(
+// 		     function(){alert("deleted");}
+// 		    ).fail(
+// 		      function(){alert("error");}
+// 		    )
+// 	}
+// })
+
+// $(".js-delete-event").on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		alert("removed");
+// 	}
+	
+// })
+
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("table").hide();
+  });
+  $("#show").click(function(){
+    $("table").show();
+  });
+});
+
+
+
+        var slide_index = 1;  
+        displaySlides(slide_index);  
+  
+        function nextSlide(n) {  
+            displaySlides(slide_index += n);  
+        }  
+  
+        function currentSlide(n) {  
+            displaySlides(slide_index = n);  
+        }  
+  
+        function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("showSlide");  
+            if (n > slides.length) { slide_index = 1 }  
+            if (n < 1) { slide_index = slides.length }  
+            for (i = 0; i < slides.length; i++) {  
+                slides[i].style.display = "none";  
+            }  
+            slides[slide_index - 1].style.display = "block";  
+        }  
+
+
+
+
+</script>
+
+
+<!-- <script type="text/javascript">
+  	$(document).ready(function(){
+        $(function(){
+		    $("#dialog-link").dialog({
+			    autoOpen: false,
+			    width: 400,
+		});
+		    $(".js-create-event").on("click", function(){
+
+			    $("#dialog-link").dialog("open");
+		});
+	});
+	$("form#event-form").on("submit",function GetTableData(e){	
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:'{% url "events" %}',
+			data:{
+				title:$('#title').val(),
+				description:$('#description').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+				action: 'post'
+	
+			},
+			success:function(data){
+				if (data.event) {
+					appendTomy_event(data.event);
+				}
+			}
+			// success:function(data){
+			// 	document.getElementById("event-form").reset();
+			// 	$("#my_event tbody").append(
+			// 		'<tr><td>${fields["title"]||""}</td><td>${fields["description"]||""}</td><td>${fields["venue"]||""}</td><td>${fields["mdate"]||""}</td><td>${fields["mtime"]||""}</td></tr>'
+			// 		) 
+			// },
+			// error : function(xhr,errmsg,err){
+			// 	console.log(xhr.status + ":" + xhr.responseText);
+			// }
+		});
+
+		$('form#event-form').trigger("reset");
+		return false;
+		// body...
+	});
+
+});
+	function appendTomy_event(event){
+		$("#my_event > tbody:last-child").append(
+			'<tr id="event-${event.id}"><td class="eventTitle" name="title">${event.title}</td><td class="eventDescription" name="description">${event.description}</td><td><button type="button" class="btn btn-warning btn-sm " onClick="editEvent({{event.id}})" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil">Edit</span></button><button type="button" class="btn btn-danger btn-sm" onClick="deleteEvent({{event.id}})"><span class="glyphicon glyphicon-trash">Delete</span></button></td></tr>'
+			)
+	}  	
+// $("form#updateEvent").on("submit",function GetTableData(e) {
+// 	e.preventDefault();
+
+// 		$.ajax({
+// 			url:'{% url "event_update" %}',
+// 			data:{
+// 				title:$('#title').val(),
+// 				description:$('#description').val(),
+// 				venue:$('#venue').val(),
+// 				mdate:$('#mdate').val(),
+// 				mtime:$('#mtime').val(),
+// 				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+// 				action: 'post'
+	
+// 			},
+// 			success:function(data){
+// 				if (data.event) {
+// 					updateTomy_event(data.event);
+// 				}	
+// 			}
+// 		});
+
+// 	    $('form#updateEvent').trigger("reset");
+//         $('#myModal').modal('hide');
+//         return false;
+// 		// body...
+// });
+$("form#updateEvent").submit(function() {
+    var idInput = $('input[name="formId"]').val().trim();
+    var titleInput = $('input[name="formTitle"]').val().trim();
+    var descriptionInput = $('input[name="formDescription"]').val().trim();
+    if (titleInput && descriptionInput) {
+    	$.ajax({
+            url: '{% url "events_update" %}',
+            data: {
+                'id': idInput,
+                'title': titleInput,
+                'description': descriptionInput,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.event) {
+                  updateTomy_event(data.event);
+                }
+            }
+        });
+    }else{
+    	alert("All fields must have a valid value.");
+    }
+    $('form#updateEvent').trigger("reset");
+    $('#myModal').modal('hide');
+    return false;
+
+});
+function editEvent(id) {
+	if (id) {
+		tr_id = "#event-" + id;
+		title = $(tr_id).find(".eventTitle").text();
+		description = $(tr_id).find(".eventDescription").text();
+		$('#form-id').val(id);
+		$('#form-title').val(title);
+		$('#form-description').val(description);
+	}
+}
+function updateTomy_event(event){
+	$("#my_event #event-" +event.id).children(".eventData").each(function (){
+		var attr = $(this).attr("title");
+		if (attr == "title") {
+			$(this).text(event.title);
+		}else{
+			$(this).text(event.description);
+		}
+	});
+}
+
+
+
+	// Delete Django Ajax Call
+function deleteEvent(id) {
+	var action = confirm("Are you sure you want to delete this event?");
+	if (action != false) {
+		$.ajax({
+			url: '{% url "events_delete" %}',
+			data: {
+				'id': id,
+			},
+			dataType:'json',
+			success:function(data){
+				if (data.deleted) {
+					$("#my_event #event-" +id).remove();
+				}
+			}
+		});
+	}
+}	
+
+// $('.delete_button').on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		let object_id = $(this).attr('data-object-id');
+// 		let url = 'delete/${object_id}/';
+// 		$.ajax({
+// 			url: ""
+// 			data: {
+// 				'csrfmiddlewaretoken': "{{ csrf_token }}"
+// 			},
+// 			type: "DELETE",
+// 			dataType: "json"
+// 		}).done(
+// 		     function(){alert("deleted");}
+// 		    ).fail(
+// 		      function(){alert("error");}
+// 		    )
+// 	}
+// })
+
+// $(".js-delete-event").on('click', function(){
+// 	var confirmation = confirm("are you sure");
+// 	if(confirmation){
+// 		alert("removed");
+// 	}
+	
+// })
+
+</script> -->
+
+
+
+
+
+</body>
+</html> 

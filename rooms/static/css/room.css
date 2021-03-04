@@ -1,0 +1,206 @@
+h2{
+	color: green;
+}
+.girl{
+	background:#444444;
+	height: 60px;
+	margin-top: 60px;
+	size: 10px;
+}
+.girl ul{
+	float: right;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 50%;
+}
+.girl li{
+	display: inline-block;
+}
+.girl li a{
+	color: #ffffff;
+	display: inline-block;
+	text-decoration: none;
+	padding: 15px 16px;
+	text-transform: uppercase; 
+}
+.girl li a:hover{
+	color: blue;
+}
+.container{
+
+}
+
+input[type=text]:focus{
+	width: 450px;
+}
+
+
+
+body li a{
+	list-style: none;
+}
+
+	input[type=text]{
+		background-image: url();
+		background-repeat: no-repeat;
+		background-position: 12px 17px;
+		padding: 12px 20px 14px 42px;
+		border-radius: 25px;
+		margin-top: 5px;
+		outline: none;
+		width: 160px;
+		-webkit-transition: width 0.7s ease-in-out;
+		-moz-transition: width 0.7s ease-in-out;
+		-ms-transition: width 0.7s ease-in-out;
+		-o-transition: width 0.7s ease-in-out;
+		transition: width 0.7s ease-in-out;
+
+			width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	}
+
+
+input[type=text],
+input[type=password]{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+button{
+	/*background-color: #48d1cc;*/
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 5%;
+
+	/*background-color: #f1f1f1"*/
+}
+.cancelbtn{
+	width: auto;
+	padding: 10px 18px;
+	background-color: #4682b4;
+}
+/*center the image and position the close button*/
+.imgcontainer{
+	text-align: center;
+	margin: 24px 0 12px 0;
+	position: relative;
+
+}
+.img.avatar{
+	width: 40%;
+	border-radius: 50%;
+}
+.container{
+	padding: 16px;
+	width: 40%;
+	padding-left: 30%;
+	background-color: #fefefe;
+
+}
+span.psw{
+	float: right;
+	padding-top: 16px;
+}
+/*the modal (background)*/
+.modal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+	padding-top: 60px;
+	list-style: none;
+	text-decoration: none;
+}
+.modal-content{
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+	width: 80%;
+}
+.close{
+	position: absolute;
+	right: 25px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
+}
+.close:hover,
+.close:focus{
+	color: red;
+	cursor: pointer;
+}
+.animate{
+	-webkit-animation:animatezoom 0.6s;
+	animation: animatezoom 0.6
+}
+@-webkit-keyframes animatezoom{
+	from{-webkit-transform: scale(0)}
+	to{-webkit-transform: scale(1)}
+}
+@keyframes animatezoom{
+	from{transform: scale(0)}
+	to{transform: scale(1)}
+}
+/*change styles for span and cancel button on extra small screens*/
+@media screen and(max-width: 300px){
+	span.psw{
+		display: block;
+		float: none;
+	}
+	.cancelbtn{
+		width: 100%;
+	}
+}
+
+
+h2{
+	text-align: center;
+	font-size: 24px
+}
+hr{
+	margin-bottom: 30px
+}
+p{
+	color: #000;
+	font-size: 16px;
+	font-weight: 700
+}
+.js-create-event{
+	border: 1px solid #0c799e;
+	width: 250px;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	border-radius: 3px;
+	background: linear-gradient(to bottom,#59d0f8 5%,#49c0e8 100%);
+	cursor: pointer;
+}
+.js-create-event:hover{
+	background: linear-gradient(to bottom,#49c0e8 5%,#59d0f8  100%)
+}
+
+
+
+
+
+
+

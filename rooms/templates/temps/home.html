@@ -1,0 +1,171 @@
+{% extends "temps/base.html" %}
+{% load static %}
+
+{% block title %}Django Ajax CRUD{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static  'css/css/css/bootstrap.css' %}">
+<style type="text/css">
+	.contain{
+		margin-left: 18% !important;
+        margin-top: 7% !important;
+
+	}
+    h2{
+        font-size: 17px !important;
+    }
+	.contact{
+		/*margin-top: 30% !important;*/
+		width: 900px !important;
+        margin-left: 170px !important;
+        margin-top: 360px !important;
+        position: absolute;		
+	}
+		/*        body {  
+		            margin: 0;  
+		            background: #e6e6e6;  
+		            /*background-image: url(10.jpg);*/
+		        }  */
+        .showSlide {  
+            display: none; 
+        }  
+            .showSlide img {  
+                width: 100%;  
+            }  
+        .slidercontainer {  
+            max-width: 1000px; 
+            position: relative;  
+            margin: auto;  
+            margin-left: 50px;
+
+        } 
+       .left, .right {  
+            cursor: pointer !important;  
+            position: absolute !important;  
+            top: 50% !important;  
+            width: auto;  
+            padding: 16px;  
+            margin-top: -22px;  
+            color: white !important;  
+            font-weight: bold;  
+            font-size: 18px;  
+            transition: 0.6s ease;  
+            border-radius: 0 3px 3px 0;  
+        }  
+        .right {  
+            right: 0;  
+            border-radius: 3px 0 0 3px;  
+        }  
+            .left:hover, .right:hover {  
+                background-color: rgba(115, 115, 115, 0.8);  
+            }  
+        .content {  
+            color: #eff5d4;  
+            font-size: 30px;  
+            padding: 8px 12px;  
+            position: absolute;  
+            top: 10px;  
+            width: 100%;  
+            text-align: center;  
+        }  
+        .active {  
+            background-color: #717171;  
+        }  
+        /* Fading animation */  
+        .fade {  
+            -webkit-animation-name: fade;  
+            -webkit-animation-duration: 0.5s;  
+            animation-name: fade;  
+            animation-duration: 0.5s;  
+        }  
+        @-webkit-keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        }  
+  
+        @keyframes fade {  
+            from {  
+                opacity: .4  
+            }  
+            to {  
+                opacity: 1  
+            }  
+        } 
+        .control{
+        	padding-left: 1100px;
+        	padding-top: 0px;	
+        	margin-top: 0px;		
+        }
+        .form{
+        	margin-top: 0px;
+        }	
+</style>
+
+<div class="contain">
+	<div class="slidercontainer">  
+        <div class="showSlide">  
+           <img style="max-height: 300px;" img src="{%static 'images/homepage-slider1.jpg' %}" >
+            <!-- <div class="content">Slide1 heading</div>   -->
+        </div>  
+        <div class="showSlide">  
+         <img style="max-height: 300px;" img src="{%static 'images/homepage-slider2.jpg' %}" >
+            <!-- <div class="content">Slide2 heading</div>   -->
+        </div>  
+  
+        <div class="showSlide">  
+            <img style="max-height: 300px;" img src="{%static 'images/homepage-slider4.jpg' %}" >
+            <!-- <div class="content">Slide3 heading</div>   -->
+        </div>  
+        <div class="showSlide">  
+            <img style="max-height: 300px;" img src="{%static 'images/homepage-slider5.jpg' %}" >
+            <!-- <div class="content">Slide4 heading</div>   -->
+        </div> 
+       
+       
+        <!-- Navigation arrows   -->
+        <a class="left" onclick="nextSlide(-1)">❮</a>  
+        <a class="right" onclick="nextSlide(1)">❯</a>  
+    </div>  
+</div>
+
+<div class="contact" id="contact">
+    <div class="container">
+        <div class="row">
+            <form method="post" action="" role="" id="post-form-base">
+                {% csrf_token %}
+            <h2>Leave a Comment</h2>
+            <p>Your feedback is much appreciated</p>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay='0.2s' style="">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-fw fa-user" aria-hidden="true"></i></span>
+                    <input style="height: 50px;"  type="text" name="fullname" id="fullname" class="form-control" aria-describedby="sizing-addon1" placeholder="Full Name">
+                </div>
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay='0.6s' style="padding-top: 10px;">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></span>
+                    <input style="height: 50px;"  type="email" name="email" id="email" class="form-control" aria-describedby="sizing-addon1" placeholder="Email Address">
+                </div>
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay='0.8s' style="padding-top: 10px;">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-fw fa-phone" aria-hidden="true"></i></span>
+                    <input style="height: 50px;" type="text" name="phonenumber" id="phonenumber" class="form-control" aria-describedby="sizing-addon1" placeholder="Phone">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="input-group wow fadeInUp" data-wow-delay='0.9s' style="padding-bottom: 5px;">
+                    <textarea class="form-control" id="info" name="body" cols="80" rows="6" placeholder="Write your message here....."></textarea>
+                </div>
+                <button  type="submit" class="btn btn-success btn-lg wow fadeInUp" data-wow-delay='2s'>Submit your message</button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+
+{% endblock javascript %}
